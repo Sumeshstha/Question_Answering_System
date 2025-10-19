@@ -1,0 +1,20 @@
+FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
+
+WORKDIR /app
+
+# Copy requirements first for better caching
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
+COPY . /app/
+
+# Set environment variables
+ENV MODEL_PATH=/app/models/bert-large-squad
+ENV PYTHONPATH=/app
+
+# Expose the port
+EXPOSE 8000
+
+# Run the API server
+CMD ["uvicorn", "src.serve:app", "--host", "0.0.0.0", "--port", "8000"]
