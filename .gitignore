@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtualenv
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Data / model artifacts (models are ignored by default; remove this line if you want to commit models with LFS)
+data/
+models/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
